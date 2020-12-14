@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+	<package name="test" extends="struts-default">
+		<interceptors>
+			<interceptor name="testinterceptor"
+				class="com.ngh.chill.interceptor.TestInterceptor" />
+			<interceptor-stack name="mystack">            <!-- created a new stack and to add default interceptors to this use "defaultStack in ref -->
+				<interceptor-ref name="defaultStack"/>
+				<interceptor-ref name="testinterceptor" />
+			</interceptor-stack>
+		</interceptors>
+		<action name="loginaction"
+			class="com.ngh.chill.action.LoginAction">
+			<interceptor-ref name="mystack" />
+			<result name="success" type="redirect">products</result>             <!-- redirected to products action -->
+			<result name="input">/login.jsp</result>
+		</action>
+		<action name="products"
+			class="com.ngh.chill.action.WelcomeAction">
+			<result name="success">/welcome.jsp</result>
+		</action>
+		<action name="addproduct"
+			class="com.ngh.chill.action.AddProductAction">
+			<result name="success" type="redirect">products</result>
+			<result name="input">/addproduct.jsp</result>
+		</action>
+	</package>
+</struts>
