@@ -8,7 +8,7 @@ public class Util {
 	 Connection connection = null;
 		try {
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		connection = DriverManager.getConnection("jdbc:mysql://localhost/db","root","Hh@9900845903");
+		connection = DriverManager.getConnection("jdbc:mysql://localhost/db","root","DB-Password");
 	}catch(Exception e) {
 		e.printStackTrace();
 	}
